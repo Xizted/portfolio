@@ -1,0 +1,8 @@
+---
+import TimelineItems from './TimelineItems.astro';
+import jobs from '../const/jobs';
+---
+
+<div class='relative pl-8 border-l-2 border-blue-600 space-y-12'>
+  {jobs.map((job) => <TimelineItems {...job} />)}
+</div>

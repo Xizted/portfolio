@@ -1,0 +1,48 @@
+---
+import classNames from 'classnames';
+
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  rel?: string;
+  class?: string;
+  title: string;
+  variant: 'primary' | 'secondary';
+  outline?: boolean;
+}
+
+const {
+  href,
+  type = 'button',
+  target = '_self',
+  rel,
+  class: className = '',
+  title,
+  variant = 'primary',
+  outline = false,
+} = Astro.props;
+
+const buttonClassNames = classNames(
+  'px-8 py-3 rounded-full transition-all',
+  {
+    'bg-blue-600 hover:bg-blue-700 text-white':
+      variant === 'primary' && !outline,
+    'border border-white hover:bg-white hover:text-gray-900 text-white':
+      variant === 'secondary' && outline,
+  },
+  className
+);
+---
+
+{
+  href ? (
+    <a href={href} target={target} rel={rel} class={buttonClassNames}>
+      {title}
+    </a>
+  ) : (
+    <button type={type} class={buttonClassNames}>
+      {title}
+    </button>
+  )
+}

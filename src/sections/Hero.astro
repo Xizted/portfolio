@@ -1,0 +1,55 @@
+---
+import Button from '../components/Button.astro';
+import SocialMedia from '../components/SocialMedia.astro';
+---
+
+<section id='home' class='min-h-screen relative flex items-center'>
+  <div
+    class='absolute inset-0 z-0'
+    style='background-image: url(https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80); background-size: cove; background-position: center;'
+  >
+    <div
+      class='absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/90 to-gray-900/30'
+    >
+    </div>
+  </div>
+  <!-- Particles -->
+  <div class='container mx-auto px-6 relative z-10'>
+    <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
+      <div class='text-white'>
+        <h1 class='text-5xl lg:text-7xl font-bold mb-6'>
+          <!-- TODO: Add typing animation -->
+          Osmar Ortiz
+          <span class='animate-pulse'>|</span>
+        </h1>
+        <p class='text-xl lg:text-2xl text-gray-300 mb-4'>
+          Desarrollador Full Stack
+        </p>
+        <p class='text-lg text-gray-400 mb-8 leading-relaxed'>
+          Especializado en crear experciencias web excepcionales utilizando
+          React y Node.js. Con más de 5 años de experiencia transformando ideas
+          en soluciones digitales innovadoras.
+        </p>
+        <div class='mb-8'>
+          <SocialMedia />
+        </div>
+        <div class='flex gap-4'>
+          <Button href='#contact' title='Contáctame' variant='primary' />
+          <Button
+            href='#about-me'
+            title='Conoce más'
+            variant='secondary'
+            outline
+          />
+        </div>
+      </div>
+      <div class='hidden lg:block'>
+        <img
+          src='https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
+          alt='Developer'
+          class='rounded-lg shadow-2xl'
+        />
+      </div>
+    </div>
+  </div>
+</section>
