@@ -1,5 +1,6 @@
 ---
 import Button from '../components/Button.astro';
+import ParticlesBackground from '../components/ParticlesBackground.astro';
 import SocialMedia from '../components/SocialMedia.astro';
 ---
 
@@ -13,13 +14,12 @@ import SocialMedia from '../components/SocialMedia.astro';
     >
     </div>
   </div>
-  <!-- Particles -->
+  <ParticlesBackground />
   <div class='container mx-auto px-6 relative z-10'>
     <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 items-center'>
       <div class='text-white'>
         <h1 class='text-5xl lg:text-7xl font-bold mb-6'>
-          <!-- TODO: Add typing animation -->
-          Osmar Ortiz
+          <span id='typing'></span>
           <span class='animate-pulse'>|</span>
         </h1>
         <p class='text-xl lg:text-2xl text-gray-300 mb-4'>
@@ -53,3 +53,18 @@ import SocialMedia from '../components/SocialMedia.astro';
     </div>
   </div>
 </section>
+
+<script>
+  const fullText = 'Osmar Ortiz';
+  let displayText = '';
+  let currentIndex = 0;
+  function type() {
+    if (currentIndex < fullText.length) {
+      displayText += fullText[currentIndex];
+      document.getElementById('typing')!.innerText = displayText;
+      currentIndex++;
+      setTimeout(type, 100);
+    }
+  }
+  type();
+</script>

@@ -1,7 +1,5 @@
 ---
-import { ExternalLink } from '@lucide/astro';
-import { projects } from '../const/projects';
-
+import classNames from 'classnames';
 const filters = [
   { name: 'Todos', value: 'all' },
   { name: 'Frontend', value: 'frontend' },
@@ -10,44 +8,80 @@ const filters = [
 ];
 ---
 
-<section id='project' class='py-20 bg-gray-50'>
+<section id='projects' class='py-20 bg-gray-50'>
   <div class='container mx-auto px-6'>
     <h2 class='text-4xl font-bold text-center mb-8'>Proyectos Destacados</h2>
-
-    <div class='flex justify-center gap-4 mb-12'>
+    <div class='flex justify-center gap-4 mb-12 flex-wrap'>
       {
         filters.map((filter) => (
           <button
-            class={`px-6 py-2 rounded-full transition-colors hover:cursor-pointer ${'bg-gray-200 text-gray-700 hover:bg-gray-300'}`}
+            class={classNames(
+              'filter-btn px-6 py-2 rounded-full transition-colors hover:cursor-pointer  hover:bg-gray-300',
+              {
+                'bg-gray-200 text-gray-700': filter.value !== 'all',
+              },
+              {
+                'bg-blue-600 text-white': filter.value === 'all',
+              }
+            )}
+            data-category={filter.value}
           >
             {filter.name}
           </button>
         ))
       }
     </div>
-
-    <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
-      {
-        projects.map((project) => (
-          <div class='bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105'>
-            <img
-              src={project.image}
-              alt={project.title}
-              class='w-full h-48 object-cover'
-            />
-            <div class='p-6'>
-              <h3 class='text-xl font-bold mb-2'>{project.title}</h3>
-              <p class='text-gray-600 mb-4'>{project.description}</p>
-              <div class='flex items-center gap-2'>
-                <ExternalLink size={20} class='text-blue-600' />
-                <a href='#' class='text-blue-600 hover:underline'>
-                  Ver proyecto
-                </a>
-              </div>
-            </div>
-          </div>
-        ))
-      }
-    </div>
+    <div id='projects-grid' class='grid grid-cols-1 md:grid-cols-2 gap-8'></div>
   </div>
 </section>
+
+<script>
+  import { projects } from '../const/projects';
+
+  const grid = document.getElementById('projects-grid');
+  const buttons = document.querySelectorAll('.filter-btn');
+
+  function renderProjects(category = 'all') {
+    grid!.innerHTML = '';
+
+    const filtered =
+      category === 'all'
+        ? projects
+        : projects.filter((p) => p.category === category);
+
+    filtered.forEach((project) => {
+      const card = document.createElement('div');
+      card.className =
+        'bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105';
+
+      card.innerHTML = `
+          <img src="${project.image}" alt="${project.title}" class="w-full h-48 object-cover" />
+          <div class="p-6">
+            <h3 class="text-xl font-bold mb-2">${project.title}</h3>
+            <p class="text-gray-600 mb-4">${project.description}</p>
+            <div class="flex items-center gap-2">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-blue-600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+              <a href="#" class="text-blue-600 hover:underline">Ver proyecto</a>
+            </div>
+          </div>
+        `;
+      grid!.appendChild(card);
+    });
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      // Update active button
+      buttons.forEach((b) => {
+        b.classList.remove('bg-blue-600', 'text-white');
+        b.classList.add('bg-gray-200', 'text-gray-700');
+      });
+      btn.classList.remove('bg-gray-200', 'text-gray-700');
+      btn.classList.add('bg-blue-600', 'text-white');
+      // @ts-expect-error
+      renderProjects(btn.dataset.category);
+    });
+  });
+
+  renderProjects('all');
+</script>
