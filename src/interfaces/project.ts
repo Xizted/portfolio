@@ -4,4 +4,5 @@ export interface Project {
   description: string;
   image: string;
   category: 'frontend' | 'backend' | 'fullstack';
+  link: string;
 }

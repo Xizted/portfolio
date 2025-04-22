@@ -3,36 +3,34 @@ import type { Project } from '../interfaces/project';
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Sistema de Gestión Empresarial',
-    description:
-      'Aplicación web completa para la gestión de recursos empresariales.',
-    image:
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    category: 'fullstack',
+    title: 'ChatBot Gemini',
+    description: 'Desarrollo de un chatbot para atención al cliente con IA.',
+    image: '/images/1.png',
+    category: 'frontend',
+    link: 'https://chat-bot-theta-jet.vercel.app/',
   },
   {
     id: 2,
-    title: 'Plataforma E-learning',
-    description:
-      'Plataforma educativa con funcionalidades de video streaming y evaluaciones.',
-    image:
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    title: 'Landing Page App Mobile',
+    description: 'Página de aterrizaje para una aplicación móvil innovadora.',
+    image: '/images/2.png',
     category: 'frontend',
+    link: 'https://sparkly-pavlova-98b4ab.netlify.app/',
   },
   {
     id: 3,
-    title: 'API REST para E-commerce',
-    description: 'Backend robusto para plataforma de comercio electrónico.',
-    image:
-      'https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-    category: 'backend',
+    title: 'Landing Page Mudy.CL',
+    description: 'Página de aterrizaje para solicitar mudanzas.',
+    image: '/images/3.png',
+    category: 'frontend',
+    link: 'https://mudy-cl.vercel.app/',
   },
   {
     id: 4,
-    title: 'Dashboard Analytics',
-    description: 'Panel de control para visualización de datos en tiempo real.',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+    title: 'Barber Shop',
+    description: 'Página de aterrizaje para una barbería.',
+    image: '/images/4.png',
     category: 'frontend',
+    link: 'https://barber-shop-omega-seven.vercel.app/',
   },
 ];

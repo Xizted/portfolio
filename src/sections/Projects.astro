@@ -11,7 +11,7 @@ const filters = [
 <section id='projects' class='py-20 bg-gray-50'>
   <div class='container mx-auto px-6'>
     <h2 class='text-4xl font-bold text-center mb-8'>Proyectos Destacados</h2>
-    <div class='flex justify-center gap-4 mb-12 flex-wrap'>
+    <!-- <div class='flex justify-center gap-4 mb-12 flex-wrap'>
       {
         filters.map((filter) => (
           <button
@@ -30,7 +30,7 @@ const filters = [
           </button>
         ))
       }
-    </div>
+    </div> -->
     <div id='projects-grid' class='grid grid-cols-1 md:grid-cols-2 gap-8'></div>
   </div>
 </section>
@@ -61,7 +61,7 @@ const filters = [
             <p class="text-gray-600 mb-4">${project.description}</p>
             <div class="flex items-center gap-2">
              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-blue-600" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-              <a href="#" class="text-blue-600 hover:underline">Ver proyecto</a>
+              <a href="${project.link}" target='_blank' rel='noopener noreferrer' class="text-blue-600 hover:underline">Ver proyecto</a>
             </div>
           </div>
         `;
